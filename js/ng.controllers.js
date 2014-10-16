@@ -99,8 +99,36 @@ angular.module('app.controllers', [])
 			// })
 		$scope.common = CommonService;
 	}])
-	.controller('SiteCtrl', ["$scope", function($scope) {
+	.controller('SiteCtrl', ["$scope", "$routeParams", "CommonService", function($scope, $routeParams, CommonService) {
 
+		var siteId = $routeParams.id;
+		var site = {};
+		var sensors = [];
+
+		var init = function() {
+			var s = CommonService.getSite(siteId);
+			site = s;
+			
+			if(angular.isDefined(site.instruments)) {
+				angular.forEach(site.instruments, function(inst) {
+					if(angular.isDefined(inst.sensors)) {
+						angular.forEach(inst.sensors, function(sens) {
+							if(sens.display) {
+								sensors.push({
+									instrument_name: inst.instrumentType.name + " (" + inst.id + ")",
+									sensor_name: sens.description
+								});
+							}
+						});
+					}
+				});
+			}
+			
+		}
+
+		init();
+		$scope.sensors = sensors;
+		$scope.site = site;
 	}])
 	.controller('AdminCtrl', ["$scope", function($scope) {
 

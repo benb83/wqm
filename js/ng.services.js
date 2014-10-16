@@ -60,7 +60,15 @@ angular.module("app.services", [])
             _abilities = [];
         }
 
-        return CS.hasPermission = _hasPermission, CS.sites = _sites, CS.setPermission = _setPermission, CS.clearAbilities = _clearAbilities, CS;
+        var _getSite = function(id) {
+            for(var i = 0; i < _sites.length; i++) {
+                if(_sites[i].id == id)
+                    return _sites[i];
+            }
+            return {};
+        }
+
+        return CS.hasPermission = _hasPermission, CS.sites = _sites, CS.setPermission = _setPermission, CS.clearAbilities = _clearAbilities, CS.getSite = _getSite, CS;
     }])
 
     .factory("AuthService", ["$rootScope", "$http", "$location", "LOCAL_STORAGE", "localStorageService", "EVENTS", 'MessageService', 'CommonService', function($rootScope, $http, $location, LOCAL_STORAGE, localStorageService, EVENTS, MessageService, CommonService) {
