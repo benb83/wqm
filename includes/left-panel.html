@@ -1,0 +1,17 @@
+<div class="login-info">
+	<span>
+		<a href="javascript:void(0);">
+			<img src="img/male.png" alt="me" class="online" /> 
+			<span>{{userName}}</span>
+		</a>
+	</span>
+</div>
+<navigation>
+	<nav:item data-view="/dashboard" data-icon="fa fa-lg fa-fw fa-home" title="Dashboard"></nav:item>
+	<nav:group data-icon="fa fa-lg fa-fw fa-globe" title="Sites" ng-show="common.hasPermission('Sites')">
+		<nav:item ng-repeat="site in common.sites" data-view="/site/{{site.id}}" title="{{site.name}}"></nav:item>
+	</nav:group>
+	<nav:item data-view="/admin" data-icon="fa fa-lg fa-fw fa-cog" title="Admin" ng-show="common.hasPermission('Admin')"></nav:item>
+</navigation>
+
+<span class="minifyme" data-action="minifyMenu"> <i class="fa fa-arrow-circle-left hit"></i> </span>

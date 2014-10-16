@@ -36,7 +36,7 @@
  * GLOBAL: Sound Config
  */
 	$.sound_path = "sound/";
-	$.sound_on = true; 
+	$.sound_on = false; 
 /*
  * Impacts the responce rate of some of the responsive elements (lower 
  * value affects CPU but improves speed)

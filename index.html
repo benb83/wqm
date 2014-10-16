@@ -1,154 +1,94 @@
 <!DOCTYPE html>
-<html lang="en-us" id="extr-page" data-ng-app="smartApp">
+<html lang="en-us" data-ng-app="smartApp">
 	<head>
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
 		<title>Water Quality Monitoring | Gardline RTS</title>
-		<meta name="description" content="">
-		<meta name="author" content="">
 
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
 		<link rel="stylesheet" type="text/css" media="screen" href="css/bootstrap.min.css">
 		<link rel="stylesheet" type="text/css" media="screen" href="css/font-awesome.min.css">
+		<link rel="stylesheet" type="text/css" media="screen" href="css/font-roboto.css">
 
 		<link rel="stylesheet" type="text/css" media="screen" href="css/smartadmin-production.min.css">
 		<link rel="stylesheet" type="text/css" media="screen" href="css/smartadmin-skins.min.css">
 
+		<link rel="stylesheet" type="text/css" media="screen" href="css/loading-bar.css">
+		<link rel="stylesheet" type="text/css" media="screen" href="css/ladda-themeless.min.css">
+
+		<link rel="stylesheet" type="text/css" media="screen" href="css/wqm.css">
+
 		<!-- FAVICONS -->
 		<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
 		<link rel="icon" href="img/favicon.ico" type="image/x-icon">
-
-		<!-- GOOGLE FONT -->
-		<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,300,400,700">
+		
+		
 
 	</head>
-	<body class="animated fadeInDown">
-		<!-- possible classes: minified, no-right-panel, fixed-ribbon, fixed-header, fixed-width-->
-		<header id="header">
-			<!--<span id="logo"></span>-->
+	<body class="fixed-header fixed-ribbon" data-ng-controller="AppCtrl">
 
-			<div id="logo-group">
-				<span id="logo"> <img src="img/logo.png" alt="SmartAdmin"> </span>
-
-				<!-- END AJAX-DROPDOWN -->
+		<div id="splash" ng-cloak="" ng-hide="isAppLoaded" class="txt-color-red">
+			<div class="" style="top:50%;width:100%;text-align:center;position:fixed;">
+				<i class="fa fa-spinner fa-5x fa-spin"></i>
 			</div>
+		</div>
 
-			<span id="extr-page-header-space"> <span class="hidden-mobile">Need an account?</span> <a href="register.html" class="btn btn-danger">Create account</a> </span>
+		<header id="header" data-ng-include="'includes/header.html'" ng-show="canShow()"></header>
 
-		</header>
+		<aside id="left-panel" ng-cloak="" ng-show="canShow()"><span data-ng-include="'includes/left-panel.html'"></span></aside>
 
-		<div id="main" role="main">
+		<div id="main" role="main" ng-cloak="" ng-class="{mainWithoutMargin: !userSignedIn}">
 
-			<!-- MAIN CONTENT -->
-			<div id="content" class="container">
+			<div id="ribbon" data-ng-include="'includes/ribbon.html'" data-ribbon="" ng-show="canShow()"></div>
 
-				<div class="row">
-					<div class="col-xs-12 col-sm-12 col-md-7 col-lg-8 hidden-xs hidden-sm">
-						<h1 class="txt-color-red login-header-big">SmartAdmin</h1>
-						<div class="hero">
-
-							<div class="pull-left login-desc-box-l">
-								<h4 class="paragraph-header">It's Okay to be Smart. Experience the simplicity of SmartAdmin, everywhere you go!</h4>
-								<div class="login-app-icons">
-									<a href="javascript:void(0);" class="btn btn-danger btn-sm">Frontend Template</a>
-									<a href="javascript:void(0);" class="btn btn-danger btn-sm">Find out more</a>
-								</div>
-							</div>
-							
-							<img src="img/demo/iphoneview.png" class="pull-right display-image" alt="" style="width:210px">
-
-						</div>
-
-						<div class="row">
-							<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-								<h5 class="about-heading">About SmartAdmin - Are you up to date?</h5>
-								<p>
-									Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa.
-								</p>
-							</div>
-							<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-								<h5 class="about-heading">Not just your average template!</h5>
-								<p>
-									Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi voluptatem accusantium!
-								</p>
-							</div>
-						</div>
-
-					</div>
-					<div class="col-xs-12 col-sm-12 col-md-5 col-lg-4">
-						<div class="well no-padding">
-							<form action="index.html" id="login-form" class="smart-form client-form">
-								<header>
-									Sign In
-								</header>
-
-								<fieldset>
-									
-									<section>
-										<label class="label">E-mail</label>
-										<label class="input"> <i class="icon-append fa fa-user"></i>
-											<input type="email" name="email">
-											<b class="tooltip tooltip-top-right"><i class="fa fa-user txt-color-teal"></i> Please enter email address/username</b></label>
-									</section>
-
-									<section>
-										<label class="label">Password</label>
-										<label class="input"> <i class="icon-append fa fa-lock"></i>
-											<input type="password" name="password">
-											<b class="tooltip tooltip-top-right"><i class="fa fa-lock txt-color-teal"></i> Enter your password</b> </label>
-										<div class="note">
-											<a href="forgotpassword.html">Forgot password?</a>
-										</div>
-									</section>
-
-									<section>
-										<label class="checkbox">
-											<input type="checkbox" name="remember" checked="">
-											<i></i>Stay signed in</label>
-									</section>
-								</fieldset>
-								<footer>
-									<button type="submit" class="btn btn-primary">
-										Sign in
-									</button>
-								</footer>
-							</form>
-
-						</div>
-						
-						<h5 class="text-center"> - Or sign in using -</h5>
-															
-										<ul class="list-inline text-center">
-											<li>
-												<a href="javascript:void(0);" class="btn btn-primary btn-circle"><i class="fa fa-facebook"></i></a>
-											</li>
-											<li>
-												<a href="javascript:void(0);" class="btn btn-info btn-circle"><i class="fa fa-twitter"></i></a>
-											</li>
-											<li>
-												<a href="javascript:void(0);" class="btn btn-warning btn-circle"><i class="fa fa-linkedin"></i></a>
-											</li>
-										</ul>
-						
-					</div>
-				</div>
-			</div>
+			<div id="content" data-ng-view="" class="view-animate" ng-cloak="" ng-show="isAppLoaded"></div>
 
 		</div>
 
-		<script src="js/jquery-2.0.2.min.js"></script>
-		<script src="js/jquery-ui-1.10.3.min.js"></script>
-		<script src="js/bootstrap.min.js"></script>
-		<script src="js/jquery.validate.min.js"></script>
-		<script src="js/jquery.maskedinput.min.js"></script>
-		
 		<!--[if IE 8]>
 			
 			<h1>Your browser is out of date, please update your browser by going to www.microsoft.com/download</h1>
 			
 		<![endif]-->
+
+		<script type="text/javascript" src="js/jquery-2.0.2.min.js"></script>
+		<script type="text/javascript" src="js/jquery-ui-1.10.3.min.js"></script>
+
+		<script type="text/javascript" src="js/app.config.js"></script>
+
+		<script type="text/javascript" src="js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="js/SmartNotification.min.js"></script>
+		<script type="text/javascript" src="js/jarvis.widget.min.js"></script>
+		<script type="text/javascript" src="js/select2.min.js"></script>
+		<script type="text/javascript" src="js/jquery.mb.browser.min.js"></script>
+		<script type="text/javascript" src="js/jquery.validate.min.js"></script>
+		<script type="text/javascript" src="js/jquery.maskedinput.min.js"></script>
+
+		<script type="text/javascript" src="js/spin.js"></script>
+		<script type="text/javascript" src="js/ladda.js"></script>
+
+		<script type="text/javascript" src="js/app.js"></script>
+
+		<script type="text/javascript" src="js/angular.js"></script>
+		<script type="text/javascript" src="js/angular-route.js"></script>
+		<script type="text/javascript" src="js/angular-animate.js"></script>
+		<script type="text/javascript" src="js/loading-bar.js"></script>
+		<script type="text/javascript" src="js/angular-ladda.js"></script>
+		<script type="text/javascript" src="js/ui-bootstrap-custom-tpls-0.11.0.js"></script>
+		<script type="text/javascript" src="js/angular-local-storage.js"></script>
+
+		<script type="text/javascript" src="js/ng.app.js"></script>
+		<script type="text/javascript" src="js/ng.controllers.js"></script>
+		<script type="text/javascript" src="js/ng.directives.js"></script>
+		<script type="text/javascript" src="js/ng.services.js"></script>
+
+		<script>
+			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+			ga('create', 'UA-55720772-1', 'auto');
+			ga('send', 'pageview');
+		</script>
 
 	</body>
 </html>

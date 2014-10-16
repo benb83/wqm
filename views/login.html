@@ -1,0 +1,40 @@
+<div>
+	<div id="content" class="container">
+		<div class="col-md-6 col-md-offset-3">
+			<div id="login-logo"><img src="img/logo.png" alt="Gardline RTS" /></div>
+			<h1 class="text-center txt-color-blue login-header-big padding-bottom-10"><strong>RTS</strong> Water Quality Monitoring</h1>
+			<div class="well no-padding">
+				<form name="loginform" class="smart-form client-form " ng-submit="Login(loginform)" novalidate="">
+					<header>
+						<span>Sign In</span>
+					</header>
+					<fieldset>
+						<section>
+							<label class="input" ng-class="{'state-success': submitted && loginform.email.$valid ,'state-error': submitted && loginform.email.$invalid}">
+								<i class="icon-append fa fa-user"></i>
+								<input type="email" name="email" ng-model="email" autofocus="" required="" placeholder="Email Address">
+								<b class="tooltip tooltip-top-right">
+									<i class="fa fa-user"></i> Please enter email address
+								</b>
+							</label>
+							<em ng-show="submitted && loginform.email.$invalid" class="invalid">Please enter your email address</em>
+						</section>
+						<section>
+							<label class="input" ng-class="{'state-success': submitted && loginform.password.$valid ,'state-error': submitted && loginform.password.$invalid}">
+								<i class="icon-append fa fa-lock"></i>
+								<input type="password" name="password" ng-model="password" required="" placeholder="Password">
+								<b class="tooltip tooltip-top-right">
+									<i class="fa fa-lock"></i> Please enter your password
+								</b>
+							</label>
+							<em ng-show="submitted && loginform.password.$invalid" class="invalid">Please enter your password</em>
+						</section>
+					</fieldset>
+					<footer>
+						<button type="submit" class="btn btn-primary ladda-button" data-ui-ladda="loading" data-style="zoom-out"><span class="ladda-label">Sign in</span></button>
+					</footer>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>

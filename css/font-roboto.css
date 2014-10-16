@@ -1,0 +1,35 @@
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 300;
+  src: url(/fonts/roboto-300-normal.eot);
+  src: local('Roboto Light'), local('Roboto-Light'), url(/fonts/roboto-300-normal.eot) format('embedded-opentype'), url(/fonts/roboto-300-normal.woff) format('woff');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  src: url(/fonts/roboto-400-normal.eot);
+  src: local('Roboto Regular'), local('Roboto-Regular'), url(/fonts/roboto-400-normal.eot) format('embedded-opentype'), url(/fonts/roboto-400-normal.woff) format('woff');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 700;
+  src: url(/fonts/roboto-700-normal.eot);
+  src: local('Roboto Bold'), local('Roboto-Bold'), url(/fonts/roboto-700-normal.eot) format('embedded-opentype'), url(/fonts/roboto-700-normal.woff) format('woff');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: italic;
+  font-weight: 400;
+  src: url(/fonts/roboto-400-italic.eot);
+  src: local('Roboto Italic'), local('Roboto-Italic'), url(/fonts/roboto-400-italic.eot) format('embedded-opentype'), url(/fonts/roboto-400-italic.woff) format('woff');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: italic;
+  font-weight: 700;
+  src: url(/fonts/roboto-700-italic.eot);
+  src: local('Roboto Bold Italic'), local('Roboto-BoldItalic'), url(/fonts/roboto-700-italic.eot) format('embedded-opentype'), url(/fonts/roboto-700-italic.woff) format('woff');
+}
